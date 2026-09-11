@@ -1,0 +1,13 @@
+---
+title: "gaoyuhao"
+---
+
+introduction: my name, again, is gaoyuhao. I studied at MDS for two weeks and found it busy for me everyday. But I knew that I was learning the skills which is useful for my future. Moreover I did some LLm projects before MDS whcih I found have some connections with my courses.
+
+
+
+This is a Quarto website.
+
+To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+
+![](images/profile.jpg){width=250px}

@@ -1,0 +1,6 @@
+---
+title: "About"
+---
+
+##About this site
+I choose data science in order to match my math skills where I have learned in my undergraduation study. Outside of data science, I would like to play some balls like football.
