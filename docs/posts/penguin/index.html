@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="gaoyuhao">
-<meta name="dcterms.date" content="2026-09-11">
+<meta name="dcterms.date" content="2026-09-22">
 
-<title>My first weeks in MDS – gaoyuhao</title>
+<title>My weeks in MDS – gaoyuhao</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,6 +27,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -120,15 +155,21 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My first weeks in MDS</h1>
+<h1 class="title">My weeks in MDS</h1>
 </div>
 
 
@@ -145,7 +186,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">September 11, 2026</p>
+      <p class="date">September 22, 2026</p>
     </div>
   </div>
   
@@ -157,15 +198,115 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>My first week starts with renting houses and learning how to submit works, finishing with playing games with my friends who are in China, their homes. I have learnt a lot about computers which I never knew before.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="orientation.jpg" class="img-fluid figure-img"></p>
-<figcaption>Orientation day on campus.</figcaption>
-</figure>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>We explore the frequency of (non)official languages used in different situations in Canada</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># the data shown below comes from the link https://github.com/ttimbers/canlang/raw/master/inst/extdata/victoria_lang.tsv named victoria. It is about the language used at specific situations and their frequency compared in a single table.</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>victoria <span class="ot">&lt;-</span> <span class="fu">read_delim</span>(<span class="st">"https://raw.githubusercontent.com/ttimbers/canlang/master/inst/extdata/victoria_lang.tsv"</span>, <span class="at">delim =</span> <span class="st">"</span><span class="sc">\t</span><span class="st">"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(victoria, <span class="dv">20</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 20 × 6
+   category          language mother_tongue most_at_home most_at_work lang_known
+   &lt;chr&gt;             &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;        &lt;dbl&gt;      &lt;dbl&gt;
+ 1 Aboriginal langu… Aborigi…            10            0            0         25
+ 2 Non-Official &amp; N… Afrikaa…           175           50            0        580
+ 3 Non-Official &amp; N… Afro-As…             0            0            0         20
+ 4 Non-Official &amp; N… Akan (T…            20            0            0          0
+ 5 Non-Official &amp; N… Albanian           125           70            0        145
+ 6 Aboriginal langu… Algonqu…             0            0            0          0
+ 7 Aboriginal langu… Algonqu…             5            0            0          0
+ 8 Non-Official &amp; N… America…            40           35           45        435
+ 9 Non-Official &amp; N… Amharic            105           25            0        140
+10 Non-Official &amp; N… Arabic            1245          660           10       1650
+11 Non-Official &amp; N… Armenian            45           10            0         65
+12 Non-Official &amp; N… Assyria…            10            0            0          0
+13 Aboriginal langu… Athabas…             0            0            0          0
+14 Aboriginal langu… Atikame…             0            0            0          0
+15 Non-Official &amp; N… Austro-…             0            0            0          0
+16 Non-Official &amp; N… Austron…            40            0            0         90
+17 Non-Official &amp; N… Azerbai…            15           10            0         35
+18 Aboriginal langu… Babine …             0            0            0          0
+19 Non-Official &amp; N… Bamanan…             0            0            0          0
+20 Aboriginal langu… Beaver               0            0            0          0</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>modified <span class="ot">&lt;-</span> victoria <span class="sc">|&gt;</span> <span class="fu">group_by</span>(language) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="st">'mean value langage users at home'</span> <span class="ot">=</span> <span class="fu">mean</span>(most_at_home))</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>modified</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 214 × 2
+   language                       `mean value langage users at home`
+   &lt;chr&gt;                                                       &lt;dbl&gt;
+ 1 Aboriginal languages, n.o.s.                                    0
+ 2 Afrikaans                                                      50
+ 3 Afro-Asiatic languages, n.i.e.                                  0
+ 4 Akan (Twi)                                                      0
+ 5 Albanian                                                       70
+ 6 Algonquian languages, n.i.e.                                    0
+ 7 Algonquin                                                       0
+ 8 American Sign Language                                         35
+ 9 Amharic                                                        25
+10 Arabic                                                        660
+# ℹ 204 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>modified1 <span class="ot">&lt;-</span> victoria <span class="sc">|&gt;</span> <span class="fu">group_by</span>(language) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="st">'mean value langage users at work'</span> <span class="ot">=</span> <span class="fu">mean</span>(most_at_work))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>modified1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 214 × 2
+   language                       `mean value langage users at work`
+   &lt;chr&gt;                                                       &lt;dbl&gt;
+ 1 Aboriginal languages, n.o.s.                                    0
+ 2 Afrikaans                                                       0
+ 3 Afro-Asiatic languages, n.i.e.                                  0
+ 4 Akan (Twi)                                                      0
+ 5 Albanian                                                        0
+ 6 Algonquian languages, n.i.e.                                    0
+ 7 Algonquin                                                       0
+ 8 American Sign Language                                         45
+ 9 Amharic                                                         0
+10 Arabic                                                         10
+# ℹ 204 more rows</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>modified2 <span class="ot">&lt;-</span> victoria <span class="sc">|&gt;</span> <span class="fu">group_by</span>(language) <span class="sc">|&gt;</span> <span class="fu">summarize</span>(<span class="st">'mean value langage users at home'</span> <span class="ot">=</span> <span class="fu">mean</span>(lang_known))</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>modified2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 214 × 2
+   language                       `mean value langage users at home`
+   &lt;chr&gt;                                                       &lt;dbl&gt;
+ 1 Aboriginal languages, n.o.s.                                   25
+ 2 Afrikaans                                                     580
+ 3 Afro-Asiatic languages, n.i.e.                                 20
+ 4 Akan (Twi)                                                      0
+ 5 Albanian                                                      145
+ 6 Algonquian languages, n.i.e.                                    0
+ 7 Algonquin                                                       0
+ 8 American Sign Language                                        435
+ 9 Amharic                                                       140
+10 Arabic                                                       1650
+# ℹ 204 more rows</code></pre>
+</div>
+</div>
+<pre><code>In the three chunks of codes above I calculate the mean value of people number who speaks different catories of laguage and who speaks them mostly at home and work, as well as the reputation of the languages to some extent. In conclusion, when people are at home, they speak Arabiuc most often. While they work outside, both Arabic and American Sign Language are spoken mostly. As for the languages people known most, comparing rows of the third table, we know Arabic, Afrikaans, and American Sign Language hold the most part life of people. Generally speaking, Arabic is the one people like most since they talk to their, for example, wife, husband, parents, using it, while more official language to some extent is American Sign Language since it has been used to work. It is not strange that American Sign Language is the second mostly used one since it has connected some big company in America, for example. Of course, people can also speak Albanian sometimes.
+</code></pre>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

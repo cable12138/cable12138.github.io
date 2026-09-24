@@ -2,9 +2,9 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/first-weeks/index.html",
       "/posts/penguin/index.html",
-      "/posts/bird/index.html"
+      "/posts/bird/index.html",
+      "/posts/first-weeks/index.html"
     ]
   }
 ]

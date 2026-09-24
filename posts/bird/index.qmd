@@ -1,10 +1,60 @@
 ---
-title: "My first weeks in MDS"
+title: "My weeks in MDS"
 author: "gaoyuhao"
-date: 2026-09-11
+date: 2026-09-22
 ---
 
 
-My first week starts with renting houses and learning how to submit works, finishing with playing games with my friends who are in China, their homes. I have learnt a lot about computers which I never knew before.
+# Introduction
+We explore the frequency of (non)official languages used in different situations in Canada. 
 
-![Orientation day on campus.](orientation.jpg)
+
+
+```{python}
+#| label: fig-penguin-mass
+#| fig-cap: "Body mass of penguins by species."
+#| warning: false
+#| message: false
+
+# the data shown below comes from the link https://github.com/ttimbers/canlang/raw/master/inst/extdata/victoria_lang.tsv named victoria. It is about the language used at specific situations and their frequency compared in a single table.
+
+
+import pandas as pd
+import numpy as np
+```
+
+```{python}
+url = "https://raw.githubusercontent.com/ttimbers/canlang/master/inst/extdata/victoria_lang.tsv"
+df = pd.read_csv(url, sep = "\t")
+df.head(10)
+df.columns
+```
+
+```{python}
+#| label: fig-penguin-mass1
+#| fig-cap: "Body mass of penguins by species."
+#| warning: false
+#| message: false
+
+df.groupby(by = "language")["most_at_home"].agg('mean')
+```
+```{python}
+#| label: fig-penguin-mass2
+#| fig-cap: "Body mass of penguins by species."
+#| warning: false
+#| message: false
+
+df.groupby(by = "language")["most_at_work"].agg('mean')
+```
+```{python}
+#| label: fig-penguin-mass3
+#| fig-cap: "Body mass of penguins by species."
+#| warning: false
+#| message: false
+
+df.groupby(by = "language")["lang_known"].agg('mean')
+```
+```
+In the three chunks of codes above I calculate the mean value of people number who speaks different catories of laguage and who speaks them mostly at home and work, as well as the reputation of the languages to some extent. In conclusion, when people are at home, they speak Arabiuc most often. While they work outside, both Arabic and American Sign Language are spoken mostly. As for the languages people known most, comparing rows of the third table, we know Arabic, Afrikaans, and American Sign Language hold the most part life of people. Generally speaking, Arabic is the one people like most since they talk to their, for example, wife, husband, parents, using it, while more official language to some extent is American Sign Language since it has been used to work. It is not strange that American Sign Language is the second mostly used one since it has connected some big company in America, for example. Of course, people can also speak Albanian sometimes.
+```
+
