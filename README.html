@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Blog – gaoyuhao</title>
+<title>readme – gaoyuhao</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -75,243 +73,77 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-author','listing-image','listing-description',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">gaoyuhao</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
-<span class="menu-text">Home</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
-<span class="menu-text">About</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./blog.html" aria-current="page"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-</header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#my-quarto-weibite" id="toc-my-quarto-weibite" class="nav-link active" data-scroll-target="#my-quarto-weibite">My Quarto weibite</a></li>
+  <li><a href="#page-link" id="toc-page-link" class="nav-link" data-scroll-target="#page-link">Page link</a>
+  <ul class="collapse">
+  <li><a href="#build-the-website-steps-built-sites-lands-and-opens" id="toc-build-the-website-steps-built-sites-lands-and-opens" class="nav-link" data-scroll-target="#build-the-website-steps-built-sites-lands-and-opens">Build the website steps/ # Built site’s lands and opens</a></li>
+  <li><a href="#sync-the-uv-environment-to-create-the-virtual-environment-and-r-packages" id="toc-sync-the-uv-environment-to-create-the-virtual-environment-and-r-packages" class="nav-link" data-scroll-target="#sync-the-uv-environment-to-create-the-virtual-environment-and-r-packages">Sync the UV environment to create the Virtual Environment, and R packages</a></li>
+  <li><a href="#render-the-site" id="toc-render-the-site" class="nav-link" data-scroll-target="#render-the-site">Render the site</a></li>
+  </ul></li>
+  <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">Data source</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Blog</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
+<section id="my-quarto-weibite" class="level1">
+<h1>My Quarto weibite</h1>
+<p>This repository uses Github Pages and it contains my profile website background and blogs as a MDS student. This repository’s content contains the source code about the frequency of (non)official languages used in different situations in Canadam and the results of some mean value in different given column’s situations to explore the most-used languages of them.</p>
+</section>
+<section id="page-link" class="level1">
+<h1>Page link</h1>
+<p>https://cable12138.github.io/</p>
+<p>#Introductions to clone and run ## Installation</p>
+<ul>
+<li>R 4.6.1</li>
+<li>Git 2.50.1</li>
+<li>Quarto 1.10.18</li>
+<li>uv 0.12.7</li>
+<li>R packages: (‘tidyverse’, ‘reticulate’, ‘gapminder’, ‘readxl’)</li>
+</ul>
+<p>The R package dependencies are managed using <code>renv</code>.</p>
+<section id="build-the-website-steps-built-sites-lands-and-opens" class="level2">
+<h2 class="anchored" data-anchor-id="build-the-website-steps-built-sites-lands-and-opens">Build the website steps/ # Built site’s lands and opens</h2>
+<p>nagivate to the folder you need to clone: cd <folder path=""> get the HTTPS URL from Github Repository &gt; Code &gt; Local &gt; HTTPS &gt; Copy the URL git clone https://github.com/cable12138/cable12138.github.io.git nagivate to the folder: cd ~/cable12138.github.io/</folder></p>
+</section>
+<section id="sync-the-uv-environment-to-create-the-virtual-environment-and-r-packages" class="level2">
+<h2 class="anchored" data-anchor-id="sync-the-uv-environment-to-create-the-virtual-environment-and-r-packages">Sync the UV environment to create the Virtual Environment, and R packages</h2>
+<p>uv sync open RStudio &gt; File &gt; Open Project &gt; Nagicate to corresponding folder &gt; .Rproj file &gt; Concole renv::restore() uv run quarto preview</p>
+</section>
+<section id="render-the-site" class="level2">
+<h2 class="anchored" data-anchor-id="render-the-site">Render the site</h2>
+<p>uv run quarto render</p>
+</section>
+</section>
+<section id="data-source" class="level1">
+<h1>Data source</h1>
+<p>The data comes from the lab 1 work’s data used to practice, section 001, of the course DSCI 511 of data science of UBC, processfor name: Elham E Khoda.</p>
 
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-date-sort="1790578800000" data-listing-file-modified-sort="1790626850574" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="431">
-<div class="thumbnail"><a href="./posts/can_language_r/index.html" class="no-external">
+</section>
 
-<p class="card-img-top"><img loading='lazy' src="posts/can_language_r/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/can_language_r/index.html" class="no-external">R language analysis</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/can_language_r/index.html" class="no-external">
-Data source: [Author/Organization], [Year], [Dataset Title]. Available via [Name of Repository/Platform] at [Link or DOI]. We explore the frequency of (non)official…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/can_language_r/index.html" class="no-external">
-<div class="listing-date">
-Sep 28, 2026
-</div>
-<div class="listing-author">
-gaoyuhao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-date-sort="1790492400000" data-listing-file-modified-sort="1790626860445" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="427">
-<div class="thumbnail"><a href="./posts/Bonus_post/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/Bonus_post/index_files/figure-html/unnamed-chunk-1-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/Bonus_post/index.html" class="no-external">Bonus (R and Python)</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/Bonus_post/index.html" class="no-external">
-We explore the frequency of (non)official languages used in different situations in Canada
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/Bonus_post/index.html" class="no-external">
-<div class="listing-date">
-Sep 27, 2026
-</div>
-<div class="listing-author">
-gaoyuhao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-date-sort="1790060400000" data-listing-file-modified-sort="1790626879499" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="374">
-<div class="thumbnail"><a href="./posts/can_language_py/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/can_language_py/index_files/figure-html/cell-7-output-1.png"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/can_language_py/index.html" class="no-external">Python analysis</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/can_language_py/index.html" class="no-external">
-We explore the frequency of (non)official languages used in different situations in Canada.
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/can_language_py/index.html" class="no-external">
-<div class="listing-date">
-Sep 22, 2026
-</div>
-<div class="listing-author">
-gaoyuhao
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-date-sort="1789110000000" data-listing-file-modified-sort="1789166496108" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="41">
-<div class="thumbnail"><a href="./posts/first-weeks/index.html" class="no-external">
-
-<p class="card-img-top"><img loading='lazy' src="posts/first-weeks/orientation.jpg"  class="thumbnail-image card-img"/></p>
-
-</a></div>
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/first-weeks/index.html" class="no-external">My first weeks in MDS</a>
-</h3>
-<div class="delink listing-description"><a href="./posts/first-weeks/index.html" class="no-external">
-My first week starts with renting houses and learning how to submit works, finishing with playing games with my friends who are in China, their homes. I have learnt a lot…
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/first-weeks/index.html" class="no-external">
-<div class="listing-date">
-Sep 11, 2026
-</div>
-<div class="listing-author">
-gaoyuhao
-</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

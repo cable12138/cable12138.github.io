@@ -66,7 +66,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -110,6 +110,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="../../styles.css">
@@ -201,21 +204,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="introduction" class="level1">
 <h1>Introduction</h1>
 <p>We explore the frequency of (non)official languages used in different situations in Canada.</p>
-<div id="fig-penguin-mass" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="1" data-message="false">
+<div id="fig-penguin-mass" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-message="false" data-execution_count="1">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-penguin-mass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the data shown below comes from the link https://github.com/ttimbers/canlang/raw/master/inst/extdata/victoria_lang.tsv named victoria. It is about the language used at specific situations and their frequency compared in a single table.</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig quarto-uncaptioned" id="fig-penguin-mass-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1
 </figcaption>
 </figure>
 </div>
-<div id="7367e3b4" class="cell" data-execution_count="2">
+<div id="a478b74a" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>url <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/ttimbers/canlang/master/inst/extdata/victoria_lang.tsv"</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(url, sep <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">10</span>)</span>
@@ -227,23 +229,131 @@ Figure&nbsp;1
 </div>
 </div>
 <div id="cell-fig-penguin-mass1" class="cell" data-message="false" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by <span class="op">=</span> <span class="st">"language"</span>)[<span class="st">"most_at_home"</span>].agg(<span class="st">'mean'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by <span class="op">=</span> <span class="st">"language"</span>)[<span class="st">"most_at_home"</span>].agg(<span class="st">'mean'</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="fig-penguin-mass1" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-penguin-mass1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<pre><code>language
-Aboriginal languages, n.o.s.       0.0
-Afrikaans                         50.0
-Afro-Asiatic languages, n.i.e.     0.0
-Akan (Twi)                         0.0
-Albanian                          70.0
-                                  ... 
-Wolof                              0.0
-Woods Cree                         0.0
-Wu (Shanghainese)                 65.0
-Yiddish                            0.0
-Yoruba                             0.0
-Name: most_at_home, Length: 214, dtype: float64</code></pre>
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">category</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">mother_tongue</th>
+<th data-quarto-table-cell-role="th">most_at_home</th>
+<th data-quarto-table-cell-role="th">most_at_work</th>
+<th data-quarto-table-cell-role="th">lang_known</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Aboriginal languages</td>
+<td>Aboriginal languages, n.o.s.</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Afrikaans</td>
+<td>175</td>
+<td>50</td>
+<td>0</td>
+<td>580</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Afro-Asiatic languages, n.i.e.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Akan (Twi)</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Albanian</td>
+<td>125</td>
+<td>70</td>
+<td>0</td>
+<td>145</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">209</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Wolof</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">210</th>
+<td>Aboriginal languages</td>
+<td>Woods Cree</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">211</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Wu (Shanghainese)</td>
+<td>125</td>
+<td>65</td>
+<td>0</td>
+<td>135</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">212</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Yiddish</td>
+<td>35</td>
+<td>0</td>
+<td>0</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">213</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Yoruba</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>90</td>
+</tr>
+</tbody>
+</table>
+
+<p>214 rows × 6 columns</p>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-penguin-mass1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: Body mass of penguins by species.
@@ -252,23 +362,131 @@ Figure&nbsp;2: Body mass of penguins by species.
 </div>
 </div>
 <div id="cell-fig-penguin-mass2" class="cell" data-message="false" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by <span class="op">=</span> <span class="st">"language"</span>)[<span class="st">"most_at_work"</span>].agg(<span class="st">'mean'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by <span class="op">=</span> <span class="st">"language"</span>)[<span class="st">"most_at_work"</span>].agg(<span class="st">'mean'</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="fig-penguin-mass2" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-penguin-mass2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<pre><code>language
-Aboriginal languages, n.o.s.      0.0
-Afrikaans                         0.0
-Afro-Asiatic languages, n.i.e.    0.0
-Akan (Twi)                        0.0
-Albanian                          0.0
-                                 ... 
-Wolof                             0.0
-Woods Cree                        0.0
-Wu (Shanghainese)                 0.0
-Yiddish                           0.0
-Yoruba                            0.0
-Name: most_at_work, Length: 214, dtype: float64</code></pre>
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">category</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">mother_tongue</th>
+<th data-quarto-table-cell-role="th">most_at_home</th>
+<th data-quarto-table-cell-role="th">most_at_work</th>
+<th data-quarto-table-cell-role="th">lang_known</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Aboriginal languages</td>
+<td>Aboriginal languages, n.o.s.</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Afrikaans</td>
+<td>175</td>
+<td>50</td>
+<td>0</td>
+<td>580</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Afro-Asiatic languages, n.i.e.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Akan (Twi)</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Albanian</td>
+<td>125</td>
+<td>70</td>
+<td>0</td>
+<td>145</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">209</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Wolof</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">210</th>
+<td>Aboriginal languages</td>
+<td>Woods Cree</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">211</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Wu (Shanghainese)</td>
+<td>125</td>
+<td>65</td>
+<td>0</td>
+<td>135</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">212</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Yiddish</td>
+<td>35</td>
+<td>0</td>
+<td>0</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">213</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Yoruba</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>90</td>
+</tr>
+</tbody>
+</table>
+
+<p>214 rows × 6 columns</p>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-penguin-mass2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Body mass of penguins by species.
@@ -277,28 +495,181 @@ Figure&nbsp;3: Body mass of penguins by species.
 </div>
 </div>
 <div id="cell-fig-penguin-mass3" class="cell" data-message="false" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by <span class="op">=</span> <span class="st">"language"</span>)[<span class="st">"lang_known"</span>].agg(<span class="st">'mean'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>df.groupby(by <span class="op">=</span> <span class="st">"language"</span>)[<span class="st">"lang_known"</span>].agg(<span class="st">'mean'</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="fig-penguin-mass3" class="cell-output cell-output-display quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="5">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-penguin-mass3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<pre><code>language
-Aboriginal languages, n.o.s.       25.0
-Afrikaans                         580.0
-Afro-Asiatic languages, n.i.e.     20.0
-Akan (Twi)                          0.0
-Albanian                          145.0
-                                  ...  
-Wolof                               0.0
-Woods Cree                         20.0
-Wu (Shanghainese)                 135.0
-Yiddish                            55.0
-Yoruba                             90.0
-Name: lang_known, Length: 214, dtype: float64</code></pre>
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">category</th>
+<th data-quarto-table-cell-role="th">language</th>
+<th data-quarto-table-cell-role="th">mother_tongue</th>
+<th data-quarto-table-cell-role="th">most_at_home</th>
+<th data-quarto-table-cell-role="th">most_at_work</th>
+<th data-quarto-table-cell-role="th">lang_known</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>Aboriginal languages</td>
+<td>Aboriginal languages, n.o.s.</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>25</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Afrikaans</td>
+<td>175</td>
+<td>50</td>
+<td>0</td>
+<td>580</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Afro-Asiatic languages, n.i.e.</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Akan (Twi)</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Albanian</td>
+<td>125</td>
+<td>70</td>
+<td>0</td>
+<td>145</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">...</th>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">209</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Wolof</td>
+<td>15</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">210</th>
+<td>Aboriginal languages</td>
+<td>Woods Cree</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>20</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">211</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Wu (Shanghainese)</td>
+<td>125</td>
+<td>65</td>
+<td>0</td>
+<td>135</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">212</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Yiddish</td>
+<td>35</td>
+<td>0</td>
+<td>0</td>
+<td>55</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">213</th>
+<td>Non-Official &amp; Non-Aboriginal languages</td>
+<td>Yoruba</td>
+<td>20</td>
+<td>0</td>
+<td>0</td>
+<td>90</td>
+</tr>
+</tbody>
+</table>
+
+<p>214 rows × 6 columns</p>
+</div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-penguin-mass3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Body mass of penguins by species.
 </figcaption>
 </figure>
+</div>
+</div>
+<div id="10513872" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># readtsv</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>victoria <span class="op">=</span> pd.read_csv(url, sep <span class="op">=</span> <span class="st">"</span><span class="ch">\t</span><span class="st">"</span>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co"># slice_max</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>top10 <span class="op">=</span> victoria.nlargest(n <span class="op">=</span> <span class="dv">10</span>, columns <span class="op">=</span> <span class="st">"lang_known"</span>).copy()</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># pivot_longer </span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>df_long <span class="op">=</span> top10.melt(</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    id_vars <span class="op">=</span> [<span class="st">"language"</span>],</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    value_vars <span class="op">=</span> [<span class="st">"most_at_home"</span>, <span class="st">"most_at_work"</span>, <span class="st">"lang_known"</span>],</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    var_name <span class="op">=</span> <span class="st">"usage_type"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    value_name <span class="op">=</span> <span class="st">"count"</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">7</span>))</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>sns.barplot(</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>    data <span class="op">=</span> df_long,</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    x <span class="op">=</span> <span class="st">"language"</span>,</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    y <span class="op">=</span> <span class="st">"count"</span>,</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    hue <span class="op">=</span> <span class="st">"usage_type"</span>,</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    dodge <span class="op">=</span> <span class="va">True</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Language usage in Victoria"</span>)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"Language"</span>)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>plt.ylabel(<span class="st">"Number of people"</span>)</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>plt.xticks(rotation <span class="op">=</span> <span class="dv">45</span>, ha <span class="op">=</span> <span class="st">"right"</span>) </span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>plt.tight_layout() </span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-7-output-1.png" width="1145" height="669" class="figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <pre><code>In the three chunks of codes above I calculate the mean value of people number who speaks different catories of laguage and who speaks them mostly at home and work, as well as the reputation of the languages to some extent. In conclusion, when people are at home, they speak Arabiuc most often. While they work outside, both Arabic and American Sign Language are spoken mostly. As for the languages people known most, comparing rows of the third table, we know Arabic, Afrikaans, and American Sign Language hold the most part life of people. Generally speaking, Arabic is the one people like most since they talk to their, for example, wife, husband, parents, using it, while more official language to some extent is American Sign Language since it has been used to work. It is not strange that American Sign Language is the second mostly used one since it has connected some big company in America, for example. Of course, people can also speak Albanian sometimes.</code></pre>

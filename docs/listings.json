@@ -2,8 +2,8 @@
   {
     "listing": "/blog.html",
     "items": [
-      "/posts/Bonus_post/index.html",
       "/posts/can_language_r/index.html",
+      "/posts/Bonus_post/index.html",
       "/posts/can_language_py/index.html",
       "/posts/first-weeks/index.html"
     ]

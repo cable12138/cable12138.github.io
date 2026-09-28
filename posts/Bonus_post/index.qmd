@@ -80,6 +80,7 @@ modified2
 #| message: false
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 
 url = "https://raw.githubusercontent.com/ttimbers/canlang/master/inst/extdata/victoria_lang.tsv"
 df = pd.read_csv(url, sep = "\t")
@@ -90,7 +91,6 @@ df.columns
 ```{python}
 
 # readtsv
-url = "https://raw.githubusercontent.com/timbers/conlang/main/inst/extdata/victoria_lang.tsv"
 victoria = pd.read_csv(url, sep = "\t")
 
 # slice_max
