@@ -18,7 +18,6 @@ We explore the frequency of (non)official languages used in different situations
 
 # the data shown below comes from the link https://github.com/ttimbers/canlang/raw/master/inst/extdata/victoria_lang.tsv named victoria. It is about the language used at specific situations and their frequency compared in a single table.
 
-
 import pandas as pd
 import numpy as np
 ```
@@ -37,7 +36,9 @@ df.columns
 #| message: false
 
 df.groupby(by = "language")["most_at_home"].agg('mean')
+df
 ```
+
 ```{python}
 #| label: fig-penguin-mass2
 #| fig-cap: "Body mass of penguins by species."
@@ -45,7 +46,9 @@ df.groupby(by = "language")["most_at_home"].agg('mean')
 #| message: false
 
 df.groupby(by = "language")["most_at_work"].agg('mean')
+df
 ```
+
 ```{python}
 #| label: fig-penguin-mass3
 #| fig-cap: "Body mass of penguins by species."
@@ -53,7 +56,47 @@ df.groupby(by = "language")["most_at_work"].agg('mean')
 #| message: false
 
 df.groupby(by = "language")["lang_known"].agg('mean')
+df
 ```
+```{python}
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# readtsv
+victoria = pd.read_csv(url, sep = "\t")
+
+# slice_max
+top10 = victoria.nlargest(n = 10, columns = "lang_known").copy()
+
+# pivot_longer 
+df_long = top10.melt(
+    id_vars = ["language"],
+    value_vars = ["most_at_home", "most_at_work", "lang_known"],
+    var_name = "usage_type",
+    value_name = "count"
+)
+
+
+plt.figure(figsize=(12, 7))
+
+
+import seaborn as sns
+sns.barplot(
+    data = df_long,
+    x = "language",
+    y = "count",
+    hue = "usage_type",
+    dodge = True
+)
+
+plt.title("Language usage in Victoria")
+plt.xlabel("Language")
+plt.ylabel("Number of people")
+plt.xticks(rotation = 45, ha = "right") 
+plt.tight_layout() 
+plt.show()
+```
+
 ```
 In the three chunks of codes above I calculate the mean value of people number who speaks different catories of laguage and who speaks them mostly at home and work, as well as the reputation of the languages to some extent. In conclusion, when people are at home, they speak Arabiuc most often. While they work outside, both Arabic and American Sign Language are spoken mostly. As for the languages people known most, comparing rows of the third table, we know Arabic, Afrikaans, and American Sign Language hold the most part life of people. Generally speaking, Arabic is the one people like most since they talk to their, for example, wife, husband, parents, using it, while more official language to some extent is American Sign Language since it has been used to work. It is not strange that American Sign Language is the second mostly used one since it has connected some big company in America, for example. Of course, people can also speak Albanian sometimes.
 ```

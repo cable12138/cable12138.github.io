@@ -53,9 +53,9 @@ df.groupby(by = "language")["most_at_home"].agg('mean')
 #| message: false
 
 
-# modified1 <- victoria |> group_by(language) |> summarize('mean value langage users at work' = mean(most_at_work))
+modified1 <- victoria |> group_by(language) |> summarize('mean value langage users at work' = mean(most_at_work))
 
-# modified1
+modified1
 
 py$df
 
@@ -86,6 +86,43 @@ df = pd.read_csv(url, sep = "\t")
 df.head(10)
 df.columns
 
+```
+```{python}
+
+# readtsv
+url = "https://raw.githubusercontent.com/timbers/conlang/main/inst/extdata/victoria_lang.tsv"
+victoria = pd.read_csv(url, sep = "\t")
+
+# slice_max
+top10 = victoria.nlargest(n = 10, columns = "lang_known").copy()
+
+# pivot_longer 
+df_long = top10.melt(
+    id_vars = ["language"],
+    value_vars = ["most_at_home", "most_at_work", "lang_known"],
+    var_name = "usage_type",
+    value_name = "count"
+)
+
+
+plt.figure(figsize=(12, 7))
+
+
+import seaborn as sns
+sns.barplot(
+    data = df_long,
+    x = "language",
+    y = "count",
+    hue = "usage_type",
+    dodge = True
+)
+
+plt.title("Language usage in Victoria")
+plt.xlabel("Language")
+plt.ylabel("Number of people")
+plt.xticks(rotation = 45, ha = "right") 
+plt.tight_layout() 
+plt.show()
 ```
 
 
