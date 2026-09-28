@@ -15,7 +15,7 @@ The R package dependencies are managed using `renv`.
 
 # Build the website steps/ # Built site's lands and opens
 git clone https://github.com/cable12138/cable12138.github.io.git
-cd ~/cable12138.github.io/docs/index.html
+cd ~/cable12138.github.io/
 
 
 # Data source
